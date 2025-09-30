@@ -25,13 +25,30 @@ do
 #Initial User Prompt & Splash-Screen:
 
 clear
+
+
 echo "  ****  **   ****  ****   *     *   ***    *** "
+sleep .2
 echo "  *    *  *  *     *      * * * *  *   *  *    "
+sleep .2
 echo "  ***  ***   ***   ***    *  *  *  *****  *    "
+sleep .2
 echo "  *    *  *  *     *      *     *  *   *  *    "
+sleep .2
 echo "  *    *   * ****  ****   *     *  *   *   *** "
+sleep .2
+
+
+# Version Info:
 echo "  ################VERSION 1.0.1################"
-sleep 1
+
+
+
+echo ' Loading Program \r '
+echo ' Loading Program. \r '
+echo ' Loading Program.. \r '
+echo ' Loading Program... \r '
+sleep 5
 
 
 # Disclaimer:
@@ -50,43 +67,53 @@ loop=true
 
 
 
-# Install Rosetta:
+    # Install Rosetta:
 
-echo -ne 'Enabling x64/x86 Intel Compatibility Layer! \r'
-sleep .5
-echo -ne 'Enabling x64/x86 Intel Compatibility Layer!. \r'
-sleep .5
-echo -ne 'Enabling x64/x86 Intel Compatibility Layer!.. \r'
-sleep .5
-echo -ne 'Enabling x64/x86 Intel Compatibility Layer!...\r'
-
-clear
-sudo /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+    echo -ne 'Enabling x64/x86 Intel Compatibility Layer! \r'
+    sleep .5
+    echo -ne 'Enabling x64/x86 Intel Compatibility Layer!. \r'
+    sleep .5
+    echo -ne 'Enabling x64/x86 Intel Compatibility Layer!.. \r'
+    sleep .5
+    echo -ne 'Enabling x64/x86 Intel Compatibility Layer!...\r'
 
 
 
-# Check for Homebrew if not installed do it!:
+    # Install Cmd 
 
-if [[ -z "$(command -v brew)" ]]; then
-    echo "Installing Hombrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    clear
+    udo /usr/sbin/softwareupdate --install-rosetta --agree-to-license
 
-else
 
-    echo -ne 'Homebrew Enabled! Updating\r'
-    sleep 1
-    echo -ne 'Homebrew Enabled! Updating.\r'
-    Sleep 1
-    echo -ne 'Homebrew Enabled! Updating..\r'
-    sleep 1
-    echo -ne 'Homebrew Enabled! Updating...\r'
-    Sleep 1
 
-    brew update
+
+    # Check for Homebrew if not installed do it!:
+
+    if [[ -z "$(command -v brew)" ]]; then
+        echo "Installing Hombrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+
+    else
+
+        echo -ne 'Homebrew Enabled! Updating\r'
+        sleep 1
+        echo -ne 'Homebrew Enabled! Updating.\r'
+        sleep 1
+        echo -ne 'Homebrew Enabled! Updating..\r'
+        sleep 1
+        echo -ne 'Homebrew Enabled! Updating...\r'
+        sleep 1
+
+
+        # Execute Update Cmd
+
+        brew update
 
 
 
 fi #EoInstall
+
 
 
 else
@@ -94,9 +121,31 @@ else
     echo -ne "I'm Sorry, But That Input Isn't Recognized."
 
 
-fi #EoMain
+fi #EoMainFunct
 
 
-done #EoWhile
+done #EoWhileLoop
+
+
+
+
+
+
+
+
+
+
+
+# Upcoming Features: Success Validaton 
+
+
+     # Check brew Install
+     # Check Rosetta Install
+
+
+    # If all good then: Say_ "Success! Homebrew is now enabled on your system!"
+    # Else Say_ "Something went wrong, please try again as sudo."
+
+    # Exit 0 
 
 
