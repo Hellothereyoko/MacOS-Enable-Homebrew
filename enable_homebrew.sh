@@ -1,3 +1,4 @@
+
 #!/usr/bin/env zsh 
 
 # CORGO R&D TECHNOLOGY
@@ -45,10 +46,15 @@ echo "  ################VERSION 1.0.1################"
 
 
 echo ' Loading Program \r '
+sleep .2
 echo ' Loading Program. \r '
+sleep .2
 echo ' Loading Program.. \r '
+sleep .2
 echo ' Loading Program... \r '
-sleep 5
+
+
+sleep 2.5
 
 
 # Disclaimer:
@@ -60,7 +66,7 @@ read proceed
 
 
 
-#Install Phase:
+#INSTALL PHASE:
 
 if [[ "$proceed" == "GO" || "$proceed" == "go" ||"$proceed" == "Go" ]]; then
 loop=true
@@ -77,12 +83,8 @@ loop=true
     sleep .5
     echo -ne 'Enabling x64/x86 Intel Compatibility Layer!...\r'
 
-
-
-    # Install Cmd 
-
     clear
-    udo /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+    sudo /usr/sbin/softwareupdate --install-rosetta --agree-to-license
 
 
 
@@ -90,7 +92,7 @@ loop=true
     # Check for Homebrew if not installed do it!:
 
     if [[ -z "$(command -v brew)" ]]; then
-        echo "Installing Hombrew..."
+        echo "Installing Homebrew..."
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 
@@ -105,11 +107,59 @@ loop=true
         echo -ne 'Homebrew Enabled! Updating...\r'
         sleep 1
 
-
-        # Execute Update Cmd
-
+        clear
         brew update
 
+        fi #EoCheckForBrew
+
+
+
+# VALIDATION PHASE:
+
+    clear
+
+    # Declare validation variables w/o initialization
+    declare brew_status
+    declare rosetta_status
+
+    echo "Validating Installation. \r"
+    sleep .2
+    echo "Validating Installation.. \r"
+    sleep .2
+    echo "Validating Installation... \r"
+    sleep .2
+
+
+
+     # Check brew Install
+     brew --version
+
+     if [[ $? -eq 0 ]]; then
+         brew_status="OK!"
+     else
+         brew_status="ERR!"
+     fi
+
+
+
+     # Check Rosetta Install
+
+        if [[ -d "/Library/Apple/usr/share/rosetta" ]]; then
+            rosetta_status="OK!"
+        else
+            rosetta_status="ERR!"
+        fi
+
+
+    # VALIDATION OUTPUT:
+    if [[ "$brew_status" = "OK!" ]] && [[ "$rosetta_status" = "OK!" ]]; then
+        echo "Validation Complete! All Systems Go!"
+        echo "Exiting..."
+        exit 0
+    else
+        echo "Something Went Very Wrong! Did you use sudo?"
+        exit 1
+    fi
 
 
 fi #EoInstall
@@ -121,31 +171,13 @@ else
     echo -ne "I'm Sorry, But That Input Isn't Recognized."
 
 
-fi #EoMainFunct
+fi #InvalidInput
+
+
+
 
 
 done #EoWhileLoop
 
-
-
-
-
-
-
-
-
-
-
-# Upcoming Features: Success Validaton 
-
-
-     # Check brew Install
-     # Check Rosetta Install
-
-
-    # If all good then: Say_ "Success! Homebrew is now enabled on your system!"
-    # Else Say_ "Something went wrong, please try again as sudo."
-
-    # Exit 0 
 
 
