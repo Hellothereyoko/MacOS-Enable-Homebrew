@@ -30,4 +30,4 @@ This unix shell program allows you to enable homebrew on your M-Series powered M
 
 </div>
 
-***This software is not approved by Apple Inc. and poses a risk of bricking your system. I have not altered System Integrity Protection (SIP) so the risk is minimal.***
+***This software is not approved by Apple Computer Inc. and poses a risk of bricking your system. I have not altered System Integrity Protection (SIP) so the risk is minimal.***
