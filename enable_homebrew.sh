@@ -3,7 +3,7 @@
 
 # CORGO R&D TECHNOLOGY
 # Yoko Parks 
-# 15 Apr 2025
+# 30 Sep 2025
 
 
 # This Software is Free for Personal/Educational Use
@@ -37,6 +37,7 @@ sleep .2
 echo "  *    *  *  *     *      *     *  *   *  *    "
 sleep .2
 echo "  *    *   * ****  ****   *     *  *   *   *** "
+echo ""
 sleep .2
 
 
@@ -45,23 +46,24 @@ echo "  ################VERSION 1.0.1################"
 
 
 
-echo ' Loading Program \r '
+printf 'Loading Program   \r'
 sleep .2
-echo ' Loading Program. \r '
+printf 'Loading Program.  \r'
 sleep .2
-echo ' Loading Program.. \r '
+printf 'Loading Program.. \r'
 sleep .2
-echo ' Loading Program... \r '
+printf 'Loading Program...\r'
 
 
 sleep 2.5
+clear
 
 
 # Disclaimer:
-
-echo -ne "WARNING: THIS MAY VOID YOUR WARRANTY! ENTER AT YOUR OWN PERIL!\n"
-echo -ne "This Program Enables Homebrew, If you don't want that please exit via ^C.\n"
-echo -ne "Otherwise Type "GO" to proceed: "
+printf "\n"
+printf "WARNING: THIS MAY VOID YOUR WARRANTY! ENTER AT YOUR OWN PERIL!\n"
+printf "This Program Enables Homebrew, If you don't want that please exit via ^C.\n"
+printf "Otherwise Type "GO" to proceed: "
 read proceed
 
 
@@ -75,13 +77,13 @@ loop=true
 
     # Install Rosetta:
 
-    echo -ne 'Enabling x64/x86 Intel Compatibility Layer! \r'
+    printf 'Enabling x64/x86 Intel Compatibility Layer!   \r'
     sleep .5
-    echo -ne 'Enabling x64/x86 Intel Compatibility Layer!. \r'
+    printf 'Enabling x64/x86 Intel Compatibility Layer!.  \r'
     sleep .5
-    echo -ne 'Enabling x64/x86 Intel Compatibility Layer!.. \r'
+    printf 'Enabling x64/x86 Intel Compatibility Layer!.. \r'
     sleep .5
-    echo -ne 'Enabling x64/x86 Intel Compatibility Layer!...\r'
+    printf 'Enabling x64/x86 Intel Compatibility Layer!...\r'
 
     clear
     sudo /usr/sbin/softwareupdate --install-rosetta --agree-to-license
@@ -98,13 +100,14 @@ loop=true
 
     else
 
-        echo -ne 'Homebrew Enabled! Updating\r'
+        clear
+        printf 'Homebrew Enabled! Updating   \r'
         sleep 1
-        echo -ne 'Homebrew Enabled! Updating.\r'
+        printf 'Homebrew Enabled! Updating.  \r'
         sleep 1
-        echo -ne 'Homebrew Enabled! Updating..\r'
+        printf 'Homebrew Enabled! Updating.. \r'
         sleep 1
-        echo -ne 'Homebrew Enabled! Updating...\r'
+        printf 'Homebrew Enabled! Updating...\r'
         sleep 1
 
         clear
@@ -119,14 +122,16 @@ loop=true
     clear
 
     # Declare validation variables w/o initialization
-    declare brew_status
-    declare rosetta_status
+    brew_status=""
+    rosetta_status=""
 
-    echo "Validating Installation. \r"
+    printf 'Validating Installation   \r'
     sleep .2
-    echo "Validating Installation.. \r"
+    printf 'Validating Installation.  \r'
     sleep .2
-    echo "Validating Installation... \r"
+    printf 'Validating Installation.. \r'
+    sleep .2
+    printf 'Validating Installation...\r'
     sleep .2
 
 
@@ -137,8 +142,10 @@ loop=true
      if [[ $? -eq 0 ]]; then
          brew_status="OK!"
      else
-         brew_status="ERR!"
+         brew_status="ERR!"    
      fi
+
+     clear
 
 
 
@@ -152,7 +159,14 @@ loop=true
 
 
     # VALIDATION OUTPUT:
+
+    echo "Brew Status: $brew_status"
+    sleep .2
+    echo "Rosetta Status: $rosetta_status"
+    sleep .2
+
     if [[ "$brew_status" = "OK!" ]] && [[ "$rosetta_status" = "OK!" ]]; then
+        echo ""
         echo "Validation Complete! All Systems Go!"
         echo "Exiting..."
         exit 0
@@ -161,17 +175,15 @@ loop=true
         exit 1
     fi
 
+else
+   
+    echo "I'm Sorry, But That Input Isn't Recognized."
+
 
 fi #EoInstall
 
 
 
-else
-   
-    echo -ne "I'm Sorry, But That Input Isn't Recognized."
-
-
-fi #InvalidInput
 
 
 
